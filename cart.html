@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="logo.webp" class=logo></a>
+        <div>
+            <ul id="navBar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a class="active" href="cart.html"><i class='bx bx-cart'></i>Cart</a></li>
+
+            </ul>
+        </div>
+    </section>
+    
+    <section id="page-header" class="about-header">
+    <!-- <div class="hero-text"> -->
+        <h2>#Let's_talk</h2>
+        <p><font color="yellow">We’re here to assist you with all cricket needs.</font></p>
+
+    </div>
+   </section>
+
+   <section id="cart" class="section-p1">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Remove</td>
+                <td>Image</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Subtotal</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></i><a href="#"><i class="far fa-times-circle"></i></a></td>
+                <td><img src="white.png" alt=""></td>
+                <td>Batting Pads</td>
+                <td>$1390</td>
+                <td><input type="number" value="1"></td>
+                <td>SubTotal</td>
+            </tr>
+            <tr>
+                <td></i><a href="#"><i class="far fa-times-circle"></i></a></td>
+                <td><img src="yellow.png" alt=""></td>
+                <td>Batting Pads</td>
+                <td>$1390</td>
+                <td><input type="number" value="1"></td>
+                <td>SubTotal</td>
+            </tr>
+            <tr>
+                <td></i><a href="#"><i class="far fa-times-circle"></i></a></td>
+                <td><img src="blue.png" alt=""></td>
+                <td>Batting Pads</td>
+                <td>$1390</td>
+                <td><input type="number" value="1"></td>
+                <td>SubTotal</td>
+            </tr>
+        </tbody>
+    </table>
+   </section>
+
+   <section id="cart.add" class="section-p1">
+    <div id="coupon">
+        <h3>Apply Coupon</h3>
+        <div>
+            <input type="text" placeholder="Enter your Coupon">
+            <button class="normal">Apply</button>
+        </div>
+    </div>
+    <div id="subtotal">
+        <h3>Cart Total</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td>$3900</td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>$3900</strong></td>
+            </tr>
+        </table>
+        <button class="normal">Proceed to Checkout</button>
+    </div>
+   </section>
+
+
+<footer class="section-p1">
+    <div class="col">
+        <img src="logo.webp" height="77px" width="77px">
+        <h4>contact</h4>
+        <p><strong>Address:</strong>777 Ranikhet.Street7.India</p>
+        <p><strong>Phone:</strong>+91 7777777777</p>
+        <p><strong>Hours:</strong>10:00-18:00,Mon-Sat</p>
+        <div class="follow">
+            <h4>Follow us</h4>
+            <div class="icon">
+                <i><i class="fab fa-facebook-f fa-users-class"></i></i>
+                <i><i class="fab fa-instagram"></i></i>
+                <i><i class="fab fa-twitter"></i></i>
+                <i><i class="fab fa-youtube"></i></i>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Terms&Conditions</a>
+        <a href="#">Contact Us</a>
+    </div>
+     <div class="col">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">View Cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+    </div>
+    <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+            <img src="Ap.png" alt="">
+            <img src="playy.png" alt="">
+        </div>
+        <p>Secured payment Options</p>
+        <img src="payment.png" alt="">
+    </div>
+    <div class="copyright">
+        <p>2025, Tech2 etc-HTML CSS Ecommerce Template</p>
+    </div>
+
+</footer>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const rows = document.querySelectorAll("#cart tbody tr");
+
+  rows.forEach(row => {
+    const priceCell = row.querySelector("td:nth-child(4)");
+    const qtyInput = row.querySelector("td:nth-child(5) input");
+    const subtotalCell = row.querySelector("td:nth-child(6)");
+
+    if (priceCell && qtyInput && subtotalCell) {
+      let price = parseFloat(priceCell.innerText.replace(/[^0-9.]/g, "")); 
+      let qty = parseInt(qtyInput.value) || 1;
+      subtotalCell.innerText = "$" + (price * qty).toFixed(2);
+      
+      // Update subtotal dynamically when qty changes
+      qtyInput.addEventListener("input", () => {
+        let qty = parseInt(qtyInput.value) || 1;
+        subtotalCell.innerText = "$" + (price * qty).toFixed(2);
+      });
+    }
+  });
+});
+</script>
+
+
+
+
+    <script src="script1.js"></script>
+</body>
+</html>
